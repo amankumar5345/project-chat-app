@@ -20,7 +20,8 @@ const router = createBrowserRouter(
       <Route path='quiz/:id' element={<Quiz />} />
       <Route path='profile/:id' element={<Profile />} />
     </Route>
-  )
+  ),
+  { basename: import.meta.env.BASE_URL }
 );
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
