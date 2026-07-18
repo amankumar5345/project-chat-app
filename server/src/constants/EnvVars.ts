@@ -20,6 +20,6 @@ export default {
   },
   Jwt: {
     Secret: process.env.JWT_SECRET ?? '',
-    Exp: process.env.COOKIE_EXP ?? '', // exp at the same time as the cookie
+    Exp: Math.floor(Number(process.env.COOKIE_EXP ?? 0) / 1000),
   },
 } as const;
