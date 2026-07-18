@@ -27,7 +27,12 @@ const server = http.createServer(app);
 // Basic middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN ?? 'http://localhost:4000',
+    credentials: true,
+  })
+);
 app.use(cookieParser(EnvVars.CookieProps.Secret));
 
 // Show routes called in console during development
