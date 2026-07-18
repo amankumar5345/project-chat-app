@@ -33,7 +33,7 @@ const io = new Server<
   SocketData
 >(server, {
   cors: {
-    origin: 'http://localhost:4000',
+    origin: process.env.CLIENT_ORIGIN ?? 'http://localhost:4000',
   },
 });
 
