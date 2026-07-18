@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: quizmaster-server
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATABASE_URL
+        sync: false # set manually in Render dashboard (MongoDB Atlas connection string)
+      - key: JWT_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true
+      - key: COOKIE_PATH
+        value: /
+      - key: COOKIE_EXP
+        value: '259200000'
+      - key: SECURE_COOKIE
+        value: 'true'
+      - key: CLIENT_ORIGIN
+        sync: false # set manually to your GitHub Pages URL, e.g. https://amankumar5345.github.io
+      - key: JET_LOGGER_MODE
+        value: CONSOLE
